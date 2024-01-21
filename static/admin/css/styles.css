@@ -1,0 +1,35 @@
+/* Adicione o seguinte bloco para definir a sombra inicialmente*/
+h2, label, input, button {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Adicione o seguinte bloco para definir a sombra inicialmente*/
+.no-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Remova a sombra completamente quando em foco ou não*/
+.no-shadow {
+    text-shadow: none;
+}
+
+/* Adicione o seguinte bloco para definir a cor das linhas da tabela como preto */
+.table-striped tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.table-bordered tbody tr {
+    border: 2px solid #dbdbdb;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.table-transparent {
+    background-color: rgba(255, 255, 255, 0.7); /* Ajuste o último valor (0.7) para controlar a opacidade */
+}
+
+.position-relative {
+    position: relative;
+}

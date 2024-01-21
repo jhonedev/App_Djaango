@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-6 offset-md-3" style="margin-top: 40px; text-align: center;">
+    <div class="text-white title-shadow no-shadow" style="background-color: rgba(252, 98, 37, 0.3); border: 1px solid #ffffff; border-radius: 10px; padding: 1px; display: inline-block;">
+        <h2>Cadastro de Usuário</h2>
+    </div>
+    <hr>
+    <form method="POST" action="{% url 'register' %}" style="background-color: rgba(252, 98, 37, 0.3); border: 1px solid #ffffff; border-radius: 10px; padding: 10px; display: inline-block;">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Seu formulário possui errors.
+                {% for field in form %}
+                    {% if field.errors %}
+                        {{field.errors}}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{form.as_p}}
+        <br>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+{% endblock %}

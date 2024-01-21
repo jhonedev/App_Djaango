@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="col-md-6 offset-md-3" style="margin-top: 40px; text-align: center;">
+        <div class="text-white title-shadow no-shadow" style="background-color: rgba(252, 98, 37, 0.3); border: 1px solid #ffffff; border-radius: 10px; padding: 1px; display: inline-block;">
+            <h2>Confirmação de Exclusão</h2>
+        </div>
+        <hr>
+        <div class="card" style="background-color: white; border: 1px solid #ffffff; border-radius: 10px; padding: 10px; display: inline-block;">
+            <div class="card-header text-center">
+                Confirmação de Exclusão
+            </div>
+            <div class="card-body text-center">
+                <p>Você tem certeza que deseja excluir o livro "{{ book.title }}"?</p>
+                <a href="{% url 'delete_book' book.id %}" class="btn btn-danger">Sim, Excluir</a>
+                <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

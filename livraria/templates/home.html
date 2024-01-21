@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="position-relative">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'admin/css/styles.css' %}">
+        {% if user.is_authenticated %}
+            <div class="col-md-6 offset-md-3" style="margin-top: 40px; text-align: center;">
+                <h2 class="text-center text-white" style=" background-color: rgba(252, 98, 37, 0.3); border: 1px solid #ffffff; border-radius: 10px; padding: 1px; display: inline-block;">Lista de livros</h2>
+            </div>
+            <hr>
+            <table class="table table-striped table-bordered table-hover table-transparent">
+                <thead class="table-dark">
+                    <tr>
+                        <!-- <th class="text-center align-middle">Id</th> -->
+                        <th class="text-center align-middle">Título</th>
+                        <th class="text-center align-middle">Gênero</th>
+                        <th class="text-center align-middle">Ano</th>
+                        <th class="text-center align-middle">Valor</th>
+                        <th class="text-center align-middle">Informações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if books %}
+                        {% for book in books %}
+                            <tr>
+                                <!-- <td class="text-center align-middle">{{book.id}}</td> -->
+                                <td class="text-center align-middle">{{book.title}}</td>
+                                <td class="text-center align-middle">{{book.genre}}</td>
+                                <td class="text-center align-middle">{{book.year}}</td>
+                                <td class="text-center align-middle">R$ {{book.value}}</td>
+                                <td class="text-center align-middle">
+                                    <form action="{% url 'book' book.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary">Detalhes</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="col-md-6 offset-md-3" style="margin-top: 40px; text-align: center;">
+                <div class="text-white title-shadow no-shadow" style="background-color: rgba(252, 98, 37, 0.3); border: 1px solid #ffffff; border-radius: 10px; padding: 1px; display: inline-block;">
+                    <h2>Login</h2>
+                </div>
+                <hr>
+                <form method="POST" action="{% url 'home' %}" style="background-color: rgba(252, 98, 37, 0.3); border: 1px solid #ffffff; border-radius: 10px; padding: 10px; display: inline-block;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label text-white">Usuário</label>
+                        <input type="text" name="usuario" class="form-control no-shadow" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white">Senha</label>
+                        <input type="password" name="senha" class="form-control no-shadow" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
