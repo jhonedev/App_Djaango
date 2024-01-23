@@ -2,7 +2,7 @@
 {% block content %}
     <div class="position-relative">
         {% load static %}
-        <link rel="stylesheet" href="{% staticfiles 'admin/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'admin/css/styles.css' %}">
         {% if user.is_authenticated %}
             <div class="col-md-6 offset-md-3" style="margin-top: 40px; text-align: center;">
                 <h2 class="text-center text-white" style=" background-color: rgba(252, 98, 37, 0.3); border: 1px solid #ffffff; border-radius: 10px; padding: 1px; display: inline-block;">Lista de livros</h2>
