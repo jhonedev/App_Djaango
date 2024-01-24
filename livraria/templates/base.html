@@ -7,16 +7,13 @@
     {% load static %}
     <style>
       body {
-          background-image: url("./static/imagens/biblioteca.jpg");
+          background-image: url("{% static '/imagens/biblioteca.jpg' %}");
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center center;
           background-attachment: fixed;
       }
   </style>
-  <script>
-    console.log("{% static 'imagens/biblioteca.jpg' %}");
- </script>
     <title>AppLivraria</title>
   </head>
   <body>
