@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm, AddBookForm
 from .models import Book
+from django.contrib.auth.decorators import user_passes_test
 
 def home(request):
     books = Book.objects.all()
@@ -77,6 +78,7 @@ def book_detail(request, id):
         messages.error(request, 'Você precisa estar logado!')
         return redirect('home')
 
+@user_passes_test(lambda u: u.is_superuser)
 def book_delete(request, id):
     if request.user.is_authenticated:
         book = Book.objects.get(id=id)
@@ -90,7 +92,10 @@ def book_delete(request, id):
 def confirm_delete(request, id):
     if request.user.is_authenticated:
         book = Book.objects.get(id=id)
-        return render(request, 'confirm_delete_book.html', {'book':book})
+        if request.user.is_superuser:
+            return render(request, 'confirm_delete_book.html', {'book':book})
+        else:
+            return HttpResponseForbidden("Você não tem permissão para excluir este livro.")
     else:
         messages.error(request, 'Você precisa estar logado!')
         return redirect('home')
