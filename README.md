@@ -1,6 +1,6 @@
 # App Django - Biblioteca
 
-Este projeto é uma aplicação web desenvolvida com Django em Python, que oferece funcionalidades para gerenciar uma biblioteca pública. Os usuários podem listar, adicionar, editar e excluir livros, além de deixar comentários sobre cada livro.
+Este projeto é uma aplicação web que está sendo desenvolvida com Django em Python, que oferece funcionalidades para gerenciar uma biblioteca pública. Os usuários podem listar, adicionar, editar e excluir livros, além de deixar comentários sobre cada livro.
 
 ## Funcionalidades Principais
 
