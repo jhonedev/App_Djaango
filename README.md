@@ -33,3 +33,9 @@ cd seu-repositorio
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
+Acesse a aplicação em http://localhost:8000
+```
+## Imagens do projeto sendo executado
+![Screenshot do Dashboard](./images/adicionarLivro.png)
+![Screenshot do Dashboard](./images/detalhesLivro.png)
+![Screenshot do Dashboard](./images/listaLivros.png)
